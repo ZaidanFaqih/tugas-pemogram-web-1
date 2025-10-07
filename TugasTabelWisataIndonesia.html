@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wisata Indonesia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f2f2f2;
+    }
+
+    table {
+      width: 100%;
+      height: 100vh;
+      border-collapse: collapse;
+      border: 8px solid #004d4d;
+    }
+
+    td {
+      vertical-align: top;
+      padding: 10px;
+      border: 4px solid #008080;
+    }
+
+    .header {
+      background-color: #008080;
+      color: white;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      height: 80px;
+      border-bottom: 6px solid #004d4d;
+    }
+
+    .menu {
+      background-color: #00a5a5;
+      width: 20%;
+      color: white;
+      border-right: 6px solid #004d4d;
+    }
+
+    .menu a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px;
+      font-weight: bold;
+      border: 2px solid #008080;
+      margin: 4px;
+      border-radius: 5px;
+    }
+
+    .menu a:hover {
+      background-color: #006666;
+      border-color: white;
+    }
+
+    .content {
+      background-color: white;
+      width: 80%;
+      padding: 20px;
+      overflow-y: auto;
+      border: 2px solid #00a5a5;
+      border-radius: 5px;
+    }
+
+    .footer {
+      background-color: #008080;
+      color: white;
+      text-align: center;
+      height: 50px;
+      font-size: 14px;
+      border-top: 6px solid #004d4d;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: 130px;
+      border-radius: 8px;
+      margin: 10px;
+      border: 4px solid #008080;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+      border: 4px solid #004d4d;
+    }
+
+    .image-description {
+      margin-top: 20px;
+      padding: 15px;
+      border: 3px solid #00a5a5;
+      border-radius: 8px;
+      background-color: #e6ffff;
+    }
+
+    .contact-list a {
+      display: block;
+      text-decoration: none;
+      color: #004d4d;
+      font-weight: bold;
+      padding: 10px;
+      margin: 6px 0;
+      border: 2px solid #00a5a5;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .contact-list a:hover {
+      background-color: #008080;
+      color: white;
+      border-color: #004d4d;
+    }
+  </style>
+
+  <script>
+    function showContent(menu) {
+      var content = document.getElementById("content");
+
+      if (menu === "home") {
+        content.innerHTML = `
+          <h2>Selamat Datang di Wisata Indonesia</h2>
+          <p>Jelajahi keindahan alam dan budaya Indonesia dari Sabang sampai Merauke.</p>
+          <p>Temukan destinasi wisata menakjubkan yang menanti untuk kamu kunjungi! 🌴</p>
+          <p>Kami membantu wisatawan menemukan pesona Indonesia dari pantai, gunung, budaya, hingga kulinernya 🍜</p>
+        `;
+      }
+
+      else if (menu === "about") {
+        content.innerHTML = `
+          <h2>Tentang Kami</h2>
+          <p>Website ini dibuat untuk memperkenalkan keindahan alam dan budaya Indonesia kepada masyarakat dunia.</p>
+          <p>Misi kami adalah mempromosikan wisata lokal agar semakin banyak wisatawan mengenal pesona Indonesia 🇮🇩</p>
+          <p>Kami percaya, setiap daerah memiliki cerita dan keindahan unik yang patut dijelajahi.</p>
+        `;
+      }
+
+      else if (menu === "gallery") {
+        content.innerHTML = `
+          <h2>Gallery Wisata Indonesia</h2>
+          <div class="gallery">
+            <img src="TugasTabelWisataIndonesia/Bali.jpeg" alt="Bali" onclick="showDescription('Bali')">
+            <img src="TugasTabelWisataIndonesia/Malang.jpeg" alt="Rumah Terbalik Malang" onclick="showDescription('Malang')">
+            <img src="TugasTabelWisataIndonesia/Gunung Bromo.jpeg" alt="Gunung Bromo" onclick="showDescription('Bromo')">
+            <img src="TugasTabelWisataIndonesia/Tanah Lot.jpeg" alt="Tanah Lot" onclick="showDescription('TanahLot')">
+            <img src="TugasTabelWisataIndonesia/Raja Ampat.jpeg" alt="Raja Ampat" onclick="showDescription('RajaAmpat')">
+          </div>
+          <div id="imgDesc" class="image-description">
+            Klik salah satu gambar untuk melihat deskripsinya.
+          </div>
+        `;
+      }
+
+      else if (menu === "contact") {
+        content.innerHTML = `
+          <h2>Hubungi Kami</h2>
+          <p>Terima kasih telah mengunjungi situs Wisata Indonesia! Kamu dapat menghubungi kami melalui media berikut:</p>
+          <div class="contact-list">
+            <a href="https://www.facebook.com/share/1FRtQTn2Nv/" target="_blank">📘 Facebook</a>
+            <a href="https://www.instagram.com/zai.dnn_?igsh=MXg5dWM3aHhzaGl6Nw==" target="_blank">📸 Instagram</a>
+            <a href="mailto:zaidnnfqh@email.com">📧 Email: zaidnnfqh@email.com</a>
+            <a href="https://wa.me/6285156856015" target="_blank">💬 WhatsApp: +62 851-5685-6015</a>
+          </div>
+        `;
+      }
+
+      else {
+        content.innerHTML = "<h2>Pilih menu di sebelah kiri untuk melihat konten</h2>";
+      }
+    }
+
+    function showDescription(place) {
+      const descBox = document.getElementById("imgDesc");
+      let text = "";
+
+      switch (place) {
+        case "Bali":
+          text = "🌺 Bali, Pulau Dewata yang terkenal dengan pantai indah, budaya unik, dan kehangatan masyarakatnya.";
+          break;
+        case "Malang":
+          text = "🏠 Rumah Terbalik Malang, Spot wisata unik dan kreatif yang cocok untuk foto-foto seru bersama keluarga.";
+          break;
+        case "Bromo":
+          text = "🌋 Gunung Bromo, Pesona gunung berapi aktif dengan pemandangan matahari terbit terbaik di Indonesia.";
+          break;
+        case "TanahLot":
+          text = "🏖️ Tanah Lot, Ikon wisata Bali dengan pura di atas batu karang dan pemandangan sunset yang memukau.";
+          break;
+        case "RajaAmpat":
+          text = "🐠 Raja Ampat, Surga dunia bawah laut di Papua Barat, rumah bagi terumbu karang dan biota laut langka.";
+          break;
+      }
+
+      descBox.innerHTML = text;
+    }
+  </script>
+</head>
+
+<body onload="showContent('home')">
+
+  <table>
+    <tr>
+      <td colspan="2" class="header">🌺 Wisata Indonesia 🌊</td>
+    </tr>
+
+    <tr>
+      <td class="menu">
+        <a href="#" onclick="showContent('home')">Home</a>
+        <a href="#" onclick="showContent('about')">Tentang Kami</a>
+        <a href="#" onclick="showContent('gallery')">Gallery</a>
+        <a href="#" onclick="showContent('contact')">Kontak</a>
+      </td>
+      <td class="content" id="content"></td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="footer">&copy; 2025 Wisata Indonesia | Semua Hak Dilindungi</td>
+    </tr>
+  </table>
+
+</body>
+</html>
